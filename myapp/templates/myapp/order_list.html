@@ -1,0 +1,22 @@
+
+<html>
+<head>
+	<title>SKF app</title>
+</head>
+<body>
+    <div>
+        <h1><a href="/">SKF app</a></h1>
+    </div>
+    {% for order in orders %}
+        <div>
+            <p>start date: {{ order.start_date }}</p>
+            <h2><a href="">{{ order.clientName }}</a></h2>
+            <p>{{  order.order_status }}</p>
+            {% if order.Reason_delay!=NULL %}
+                <p>reason of delay: {{ order.Reason_delay }} </p>
+                <p>delay duration: {{ order.delay }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
