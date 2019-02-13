@@ -9,3 +9,5 @@ this the codebase for our project for SIH 19
 6. run `python manage.py migrate`
 7. run `python manage.py runserver`
 8. go to ` http://127.0.0.1:8000` 
+9. run `python manage.py makemigrations myapp`
+10. run `python manage.py migrate myapp` 
