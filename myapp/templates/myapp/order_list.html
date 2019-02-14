@@ -12,7 +12,7 @@
             <p>start date: {{ order.start_date }}</p>
             <h2><a href="">{{ order.clientName }}</a></h2>
             <p>{{  order.order_status }}</p>
-            {% if order.Reason_delay!=NULL %}
+            {% if order.Reason_delay is not NULL %}
                 <p>reason of delay: {{ order.Reason_delay }} </p>
                 <p>delay duration: {{ order.delay }}</p>
             {% endif %}
