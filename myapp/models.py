@@ -24,6 +24,7 @@ class Order(models.Model):
     start_date = models.DateTimeField( default=timezone.now)
     completion_date = models.DateTimeField( blank=True, null=True)
     Reason_delay = models.TextField(null=True, blank=True)
+    order_details = models.TextField(null= True)
     delay = models.DecimalField( blank=True, null=True, decimal_places=0, max_digits=2)
     order_status = models.CharField( max_length=2, choices=ORDER_STATUS, default=APPROVED)
 

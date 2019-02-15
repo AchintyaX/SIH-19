@@ -2,9 +2,18 @@
 
 {% block content %}
     <div class="post">
+        <h2><a href="">{{ order.OrderID }}</a></h2>
+        <h2><a href="">{{ order.clientName }}</a></h2>
         <div class="date">
-            <p>order confirmation date:{{ order.start_date }}</p>
-            <p>order deadline {{ order.completion_date }}</p>
+            <p><b>order confirmation date:</b>  {{ order.start_date }}</p>
+            <p><b>order deadline:</b>  {{ order.completion_date }}</p>
         </div>
+        <p><i>Order Status: {{ order.order_status }}</i></p>
+        <h4>Order Details</h4>
+        <p>{{ order.order_details}}</p>
+        {% if order.delay_reason %}
+            <p><b>Reason of delay:</b>  {{ order.delay_reason|linebreaksbr }}</p>
+            <p><b>Delay:</b> {{ order.delay }} </p>
+        {% endif %}
     </div>
 {% endblock %}

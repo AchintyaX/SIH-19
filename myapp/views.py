@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Order
 from django.utils import timezone
+from .forms import OrderForm
 
 # Create your views here.
 def order_list(request):
@@ -9,3 +10,16 @@ def order_list(request):
 def order_detail(request, pk):
     order = get_object_or_404(Order, pk=pk)
     return render(request, 'myapp/order_detail.html', {'order': order})
+
+def order_new(request):
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.Author = request.user
+            order.start_date = timezone.now()
+            order.save()
+            return redirect('order_detail', pk=order.pk)
+    else:
+        form = OrderForm()
+    return render(request, 'myapp/order_new.html', {'form': form})
