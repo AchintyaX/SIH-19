@@ -1,0 +1,10 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <div class="post">
+        <div class="date">
+            <p>order confirmation date:{{ order.start_date }}</p>
+            <p>order deadline {{ order.completion_date }}</p>
+        </div>
+    </div>
+{% endblock %}
