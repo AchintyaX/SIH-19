@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="post">
-        <h2><a href="">{{ order.OrderID }}</a></h2>
         <h2><a href="">{{ order.clientName }}</a></h2>
+        <h2>OrderID: <a href="">{{ order.OrderID }}</a></h2>
         <div class="date">
             <p><b>order confirmation date:</b>  {{ order.start_date }}</p>
             <p><b>order deadline:</b>  {{ order.completion_date }}</p>
@@ -11,9 +11,10 @@
         <p><i>Order Status: {{ order.order_status }}</i></p>
         <h4>Order Details</h4>
         <p>{{ order.order_details}}</p>
-        {% if order.delay_reason %}
-            <p><b>Reason of delay:</b>  {{ order.delay_reason|linebreaksbr }}</p>
+        {% if order.Reason_delay %}
+            <p><b>Reason of delay:</b>  {{ order.Reason_delay|linebreaksbr }}</p>
             <p><b>Delay:</b> {{ order.delay }} </p>
         {% endif %}
+        <a class="btn btn-default" href="{% url 'order_edit' pk=order.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
     </div>
 {% endblock %}
