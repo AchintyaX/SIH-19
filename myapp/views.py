@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Order
 from django.utils import timezone
 from .forms import OrderForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def order_list(request):
