@@ -13,6 +13,7 @@ def order_detail(request, pk):
     order = get_object_or_404(Order, pk=pk)
     return render(request, 'myapp/order_detail.html', {'order': order})
 
+@login_required
 def order_new(request):
     if request.method == "POST":
         form = OrderForm(request.POST)
@@ -26,6 +27,7 @@ def order_new(request):
         form = OrderForm()
     return render(request, 'myapp/order_new.html', {'form': form})
 
+@login_required
 def order_edit(request, pk):
     order = get_object_or_404(Order, pk=pk)
     if request.method == "POST":
