@@ -5,10 +5,12 @@ from .forms import OrderForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+@login_required
 def order_list(request):
     orders = Order.objects.filter(start_date__lte=timezone.now()).order_by('start_date')
     return render( request, 'myapp/order_list.html', {'orders': orders})
-
+@login_required
 def order_detail(request, pk):
     order = get_object_or_404(Order, pk=pk)
     return render(request, 'myapp/order_detail.html', {'order': order})
