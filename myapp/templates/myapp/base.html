@@ -9,10 +9,13 @@
     </head>
     <body>
         <div class="page-header">
-            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
             <a href="{% url 'order_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <h1><a href="/">SKF app</a></h1>
-            <p> Hello {{ user.username }}, <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+            {% if user.is_authenticated %}
+                <p> Hello {{ user.username }}, <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
         </div>
 
         <div class="content container">
