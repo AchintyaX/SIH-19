@@ -1,5 +1,5 @@
 # SIH 19
-this the codebase for our project for SIH 19 
+this the codebase for our project for SIH 19, for the SKF pvt ltd
 # How to Install
 1. create a git clone 
 2. create virtual env
