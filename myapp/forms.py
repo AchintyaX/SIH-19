@@ -7,4 +7,4 @@ class OrderForm(forms.ModelForm):
         fields = ('OrderID','clientName', 'start_date', 'completion_date', 'order_details', 'Reason_delay',)
 
 class UpdateOrderForm(forms.Form):
-    
+    OrderID = forms.IntegerField()
