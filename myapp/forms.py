@@ -23,7 +23,7 @@ class UpdateOrderForm(forms.Form):
     OrderID = forms.IntegerField()
     clientName = forms.CharField( max_length=20)
     start_date = forms.DateField(initial=timezone.now())
-    completion_date = forms.DateField()
+    completion_date = forms.DateField(widget=forms.SelectDateWidget())
     order_details = forms.CharField()
     Reason_delay = forms.CharField()
     order_status = forms.CharField( max_length=2)
