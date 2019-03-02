@@ -1,15 +1,18 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-    <table style="width:100%" class="table table-hover">
-        <tr>
-            <th> Supplier ID </th>
-            <th> Supplier Name </th>
-            <th> Supplier Address </th>
-            <th> Supplier Email </th>
-            <th> Transporation Time </th>
-            <th> Action </th>
-        </tr>
+    <center>
+    <table  class="table table-hover">
+        <thead class="thead-dark">
+                <tr>
+                        <th> Supplier ID </th>
+                        <th> Supplier Name </th>
+                        <th> Supplier Address </th>
+                        <th> Supplier Email </th>
+                        <th> Transporation Time </th>
+                        
+                </tr>
+        </thead>
         {% for supplier in suppliers %}
             <tr>
                 <td> {{ supplier.supplier_id }} </td>
@@ -17,10 +20,11 @@
                 <td> {{ supplier.supplier_address }} </td>
                 <td> {{ supplier.supplier_email }} </td>
                 <td> {{ supplier.supplier_time }} </td>
-                <td> <a href=""> Click Here to place new order </a> </td>
+                
             </tr>
         {% endfor %}
     
     </table>
+</center>
 
 {% endblock %}

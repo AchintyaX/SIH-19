@@ -16,6 +16,7 @@
             <th>Order Date</th>
             <th>Expected Delivery Date</th>
             <th>Delivery Date</th>
+            <th>Order Status</th>
         </tr>
         {% for product in supplier.products.all %}
             <tr>
@@ -24,8 +25,10 @@
                 <td> {{ product.main_order_date }} </td>
                 <td> {{ product.completion_date }} </td>
                 <td> {{ product.recieved_date }} </td>
+                <td> {{ product.product_status }} </td>
             </tr>
         {% endfor %}
     </table>
+    <a class="btn btn-default" href="{% url 'product_new' pk=supplier.pk %}">Place Order</a>
 
 {% endblock %}

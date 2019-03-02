@@ -48,6 +48,19 @@ class Supplier(models.Model):
         return self.supplier_name
 
 class Product(models.Model):
+    APPROVED = 'AP'
+    PROCESSING = 'PR'
+    PACKED = 'PD' 
+    DISPATCHED = 'DP'
+    ORDER_STATUS = (
+        (APPROVED, 'Approved'),
+        (PROCESSING, 'Processing'),
+        (PACKED, 'Packed'), 
+        (DISPATCHED, 'Dispatched'), 
+
+    )
+
+
     A = 'A'
     B = 'B'
     C = 'C'
@@ -63,7 +76,9 @@ class Product(models.Model):
     product_type = models.CharField(max_length=1, choices=PRODUCT_TYPE, default=A)
     main_order_date = models.DateTimeField(default=timezone.now)
     completion_date = models.DateTimeField(null=False)
-    recieved_date = models.DateField(null=False)
+    recieved_date = models.DateField()
+    product_status = models.CharField(max_length=2, choices=ORDER_STATUS, default=APPROVED)
+    
 
     def publish(self):
         self.save()

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Order, Supplier
 from django.utils import timezone
-from .forms import OrderForm
+from .forms import OrderForm, ProductForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -45,3 +45,16 @@ def order_edit(request, pk):
     else:
         form = OrderForm(instance=order)
     return render(request, 'myapp/order_edit.html', {'form': form})
+@login_required
+def product_new(request, pk):
+    supplier = get_object_or_404(Supplier, pk=pk)
+    if request.method=="POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.supplier = supplier
+            product.save()
+            return redirect('supplier_detail', pk=supplier.pk)
+    else:
+        form = ProductForm()
+    return render(request, 'myapp/product_new.html', {'form': form})
