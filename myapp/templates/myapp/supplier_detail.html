@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <h1> {{ supplier.supplier_name }} </h1>
+    <div>
+        <h2>Details</h2>
+        <p>Supplier ID: {{ supplier.supplier_id }} </p>
+        <p>Supplier Address: {{ supplier.supplier_address }} </p>
+        <p>Supplier Contact: {{ supplier.supplier_email }}</p>
+        <p>Transportation time: {{ supplier.supplier_time }}</p>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>Order ID</th>
+            <th>Product Type</th>
+            <th>Order Date</th>
+            <th>Expected Delivery Date</th>
+            <th>Delivery Date</th>
+        </tr>
+        {% for product in supplier.products.all %}
+            <tr>
+                <td> {{ product.order_id }} </td>
+                <td> {{ product.product_type }} </td>
+                <td> {{ product.main_order_date }} </td>
+                <td> {{ product.completion_date }} </td>
+                <td> {{ product.recieved_date }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

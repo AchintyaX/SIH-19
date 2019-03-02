@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <table style="width:100%" class="table table-hover">
+        <tr>
+            <th> Supplier ID </th>
+            <th> Supplier Name </th>
+            <th> Supplier Address </th>
+            <th> Supplier Email </th>
+            <th> Transporation Time </th>
+            <th> Action </th>
+        </tr>
+        {% for supplier in suppliers %}
+            <tr>
+                <td> {{ supplier.supplier_id }} </td>
+                <td> <a href="{% url 'supplier_detail' pk=supplier.pk %}">{{ supplier.supplier_name }}</a> </td>
+                <td> {{ supplier.supplier_address }} </td>
+                <td> {{ supplier.supplier_email }} </td>
+                <td> {{ supplier.supplier_time }} </td>
+                <td> <a href=""> Click Here to place new order </a> </td>
+            </tr>
+        {% endfor %}
+    
+    </table>
+
+{% endblock %}

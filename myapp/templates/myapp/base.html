@@ -1,16 +1,16 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>SKF app</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/myapp.css' %}">
+        <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     </head>
     <body>
         <div class="page-header">
-            <a href="{% url 'order_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">SKF app</a></h1>
+            <!--<a href="{% url 'order_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> -->
+            <h1><a href="/"><img class = "logo" src = "https://www.skf.com/img/logo.png"></a></h1>
             {% if user.is_authenticated %}
                 <p> Hello {{ user.username }}, <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
             {% else %}

@@ -1,19 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Order
+from .models import Order, Supplier
 from django.utils import timezone
 from .forms import OrderForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+def home(request):
+    return render( request, 'myapp/home.html')
 @login_required
-def order_list(request):
-    orders = Order.objects.filter(start_date__lte=timezone.now()).order_by('start_date')
-    return render( request, 'myapp/order_list.html', {'orders': orders})
+def supplier_list (request):
+    suppliers = Supplier.objects.all()
+    return render( request, 'myapp/supplier_list.html', {'suppliers': suppliers})
 @login_required
-def order_detail(request, pk):
-    order = get_object_or_404(Order, pk=pk)
-    return render(request, 'myapp/order_detail.html', {'order': order})
+def supplier_detail(request, pk):
+    supplier = get_object_or_404(Supplier, pk=pk)
+    return render(request, 'myapp/supplier_detail.html', {'supplier': supplier})
 
 @login_required
 def order_new(request):

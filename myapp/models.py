@@ -8,7 +8,7 @@ from django.utils import timezone
 class Order(models.Model):
     APPROVED = 'AP'
     PROCESSING = 'PR'
-    PACKED = 'PD'
+    PACKED = 'PD' 
     DISPATCHED = 'DP'
     ORDER_STATUS = (
         (APPROVED, 'Approved'),
@@ -33,3 +33,40 @@ class Order(models.Model):
 
     def __str__(self):
         return self.clientName
+
+class Supplier(models.Model):
+    supplier_id = models.CharField(max_length=10, null=False)
+    supplier_name = models.CharField(max_length=200 )
+    supplier_address = models.TextField()
+    supplier_email = models.EmailField()
+    supplier_time = models.IntegerField(default=10)
+
+    def publish(self):
+        self.save()
+    
+    def __str__(self):
+        return self.supplier_name
+
+class Product(models.Model):
+    A = 'A'
+    B = 'B'
+    C = 'C'
+
+    PRODUCT_TYPE  = (
+        (A, 'A'),
+        (B, 'B'),
+        (C, 'C'),
+    )
+
+    supplier = models.ForeignKey('myapp.Supplier', on_delete=models.CASCADE, related_name='products')
+    order_id = models.CharField(max_length=10, null=False)
+    product_type = models.CharField(max_length=1, choices=PRODUCT_TYPE, default=A)
+    main_order_date = models.DateTimeField(default=timezone.now)
+    completion_date = models.DateTimeField(null=False)
+    recieved_date = models.DateField(null=False)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.order_id
