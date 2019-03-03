@@ -1,7 +1,7 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-    <h2>New Order</h2>
+    <h2> Order details</h2>
     <form method="POST" class="product-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-primary">Save</button>

@@ -1,4 +1,7 @@
+
 {% extends 'myapp/base.html' %}
+
+{% load static %}
 
 {% block content %}
     <h1> {{ supplier.supplier_name }} </h1>
@@ -30,5 +33,15 @@
         {% endfor %}
     </table>
     <a class="btn btn-default" href="{% url 'product_new' pk=supplier.pk %}">Place Order</a>
-
+    {% if supplier.supplier_name is "RK Industries"%}
+        <img src="{% static 'assets/Graph1.png' %}">
+    {% elif supplier.supplier_name is "Bearing guys" %}
+        <img src="{% static 'assets/Graph2.png' %}">
+    {% elif supplier.supplier_name is "BK builders" %}
+        <img src="{% static 'assets/Graph3.png' %}">    
+    {% elif supplier.supplier_name is "max" %}
+        <img src="{% static 'assets/Graph4.png' %}">
+    {% else %}
+        <img src="{% static 'assets/Graph5.png' %}"> 
+    {%endif%}     
 {% endblock %}

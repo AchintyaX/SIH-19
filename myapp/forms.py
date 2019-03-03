@@ -33,4 +33,4 @@ class UpdateOrderForm(forms.Form):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('order_id', 'product_type', 'main_order_date', 'completion_date', 'recieved_date',)
+        fields = ('order_id', 'product_type', 'main_order_date', 'completion_date', 'recieved_date','product_status')

@@ -1,0 +1,10 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+http_ece/__init__.py
+http_ece.egg-info/PKG-INFO
+http_ece.egg-info/SOURCES.txt
+http_ece.egg-info/dependency_links.txt
+http_ece.egg-info/requires.txt
+http_ece.egg-info/top_level.txt

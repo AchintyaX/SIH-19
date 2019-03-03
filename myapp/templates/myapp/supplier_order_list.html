@@ -9,6 +9,7 @@
                 <th>Expected Delivery Date</th>
                 <th>Delivery Date</th>
                 <th>Order Status</th>
+                <th>Update Order details</th>
             </tr>
             {% for supplier in suppliers %}
                 {% if supplier.supplier_name == user.username %}
@@ -20,6 +21,7 @@
                             <td> {{ product.completion_date }} </td>
                             <td> {{ product.recieved_date }} </td>
                             <td> {{ product.product_status }} </td>
+                            <td> <a href="{% url 'product_edit' pk=supplier.pk %}">update order</a> </td>
                         </tr>
             {% endfor %}
         {% endif %}

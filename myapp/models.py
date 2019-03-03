@@ -40,6 +40,7 @@ class Supplier(models.Model):
     supplier_address = models.TextField()
     supplier_email = models.EmailField()
     supplier_time = models.IntegerField(default=10)
+    supplier_delay = models.BooleanField(default=False)
 
     def publish(self):
         self.save()
@@ -50,7 +51,7 @@ class Supplier(models.Model):
 class Product(models.Model):
     APPROVED = 'AP'
     PROCESSING = 'PR'
-    PACKED = 'PD' 
+    PACKED = 'PD'  
     DISPATCHED = 'DP'
     ORDER_STATUS = (
         (APPROVED, 'Approved'),
@@ -75,7 +76,7 @@ class Product(models.Model):
     order_id = models.CharField(max_length=10, null=False)
     product_type = models.CharField(max_length=1, choices=PRODUCT_TYPE, default=A)
     main_order_date = models.DateTimeField(default=timezone.now)
-    completion_date = models.DateTimeField(null=False)
+    completion_date = models.DateField()
     recieved_date = models.DateField()
     product_status = models.CharField(max_length=2, choices=ORDER_STATUS, default=APPROVED)
     
@@ -98,8 +99,6 @@ class Raw(models.Model):
         (UTILIZING, 'Utilizing'), 
 
     )
-
-    supplier= models.ForeignKey('myapp.Supplier', on_delete=models.CASCADE, related_name='raws')
     A = 'A'
     B = 'B'
     C = 'C'
@@ -109,6 +108,8 @@ class Raw(models.Model):
         (B, 'B'),
         (C, 'C'),
     )
+
+    supplier= models.ForeignKey('myapp.Supplier', on_delete=models.CASCADE, related_name='raws')
     mill_name = models.CharField(max_length=200)
     component_type = models.CharField(max_length=1, choices=PRODUCT_TYPE, default=A)
     component_status = models.CharField(max_length=2, choices=ORDER_STATUS, default=NOUPDATE)

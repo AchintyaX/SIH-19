@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: http-ece
+Version: 1.1.0
+Summary: Encrypted Content Encoding for HTTP
+Home-page: https://github.com/martinthomson/encrypted-content-encoding
+Author: Martin Thomson
+Author-email: martin.thomson@gmail.com
+License: MIT
+Description: Encipher HTTP Messages
+Keywords: crypto http
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
