@@ -1,0 +1,30 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+   <table class="table table-hover">
+            <tr>
+                <th>Order ID</th>
+                <th>Product Type</th>
+                <th>Order Date</th>
+                <th>Expected Delivery Date</th>
+                <th>Delivery Date</th>
+                <th>Order Status</th>
+            </tr>
+            {% for supplier in suppliers %}
+                {% if supplier.supplier_name == user.username %}
+                    {% for product in supplier.products.all %}
+                        <tr>
+                            <td> {{ product.order_id }} </td>
+                            <td> {{ product.product_type }} </td>
+                            <td> {{ product.main_order_date }} </td>
+                            <td> {{ product.completion_date }} </td>
+                            <td> {{ product.recieved_date }} </td>
+                            <td> {{ product.product_status }} </td>
+                        </tr>
+            {% endfor %}
+        {% endif %}
+    {% endfor%}
+
+   </table>
+
+{% endblock %}

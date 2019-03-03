@@ -85,3 +85,36 @@ class Product(models.Model):
 
     def __str__(self):
         return self.order_id
+
+class Raw(models.Model):
+    NOUPDATE = 'NA'
+    PROCESSING = 'PR'
+    ACQUIRED = 'AQ' 
+    UTILIZING = 'UT'
+    ORDER_STATUS = (
+        (NOUPDATE, 'NoUpdate'),
+        (PROCESSING, 'Processing'),
+        (ACQUIRED, 'Acquired'), 
+        (UTILIZING, 'Utilizing'), 
+
+    )
+
+    supplier= models.ForeignKey('myapp.Supplier', on_delete=models.CASCADE, related_name='raws')
+    A = 'A'
+    B = 'B'
+    C = 'C'
+
+    PRODUCT_TYPE  = (
+        (A, 'A'),
+        (B, 'B'),
+        (C, 'C'),
+    )
+    mill_name = models.CharField(max_length=200)
+    component_type = models.CharField(max_length=1, choices=PRODUCT_TYPE, default=A)
+    component_status = models.CharField(max_length=2, choices=ORDER_STATUS, default=NOUPDATE)
+    lead_time = models.IntegerField(default=2)
+
+    def publish(self):
+        self.save()
+    def __str__(self):
+        return self.mill_name

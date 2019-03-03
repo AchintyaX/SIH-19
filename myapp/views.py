@@ -3,15 +3,25 @@ from .models import Order, Supplier
 from django.utils import timezone
 from .forms import OrderForm, ProductForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 def home(request):
     return render( request, 'myapp/home.html')
 @login_required
-def supplier_list (request):
-    suppliers = Supplier.objects.all()
-    return render( request, 'myapp/supplier_list.html', {'suppliers': suppliers})
+def supplier_list(request):
+    if request.user.is_superuser:
+        suppliers = Supplier.objects.all()
+        return render(request, 'myapp/supplier_list.html', {'suppliers': suppliers})
+    else:
+        suppliers = Supplier.objects.all()
+        user = request.user
+        return render(request, 'myapp/supplier_order_list.html', {'suppliers':suppliers,'user':user})
+   
+       
+
+   
 @login_required
 def supplier_detail(request, pk):
     supplier = get_object_or_404(Supplier, pk=pk)
